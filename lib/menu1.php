@@ -18,7 +18,7 @@
 	    if($_SESSION['userlevel']==1)
 	    {
 ?>
-	    <echo>You admin </echo>
+	    <echo><br>You admin </echo>
 <?php
         }
 ?>

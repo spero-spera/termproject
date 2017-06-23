@@ -18,8 +18,9 @@
 		echo("hi " . "$_COOKIE[name]");
 		if($_COOKIE[admin]==1)
 		{
-			?>
-		 <a href="./pension/pension.php">add pension</a>
+			?><br> 
+		 <a href="./pension/pension.php">add pension</a><br>
+		 <a href="./pension/list_pension.php">show pension list and add room</a>
 	<?php	}
 	?>
 	</div>  <!-- end of menu --> 
