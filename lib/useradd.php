@@ -1,3 +1,4 @@
+<div id="home"><a href="../index.php">Pension(go to home)</a></div>
 <doctype html>
 <html>
 <head>

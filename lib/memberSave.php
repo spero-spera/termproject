@@ -11,6 +11,16 @@
  $gender=$_POST['gender'];
  $email=$_POST['email'];
  
+ if($_POST['pwd'] != $_POST['pwd2'])
+ {
+  echo("
+           <script>
+             window.alert('password unmatch.')
+             history.go(-1)
+           </script>
+         ");
+         exit;
+ }
 	
 	$sql = "select * from user where id='$id'";
  $result = mysqli_query($conn,$sql);

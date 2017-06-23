@@ -1,7 +1,9 @@
-
-<meta charset="euc-kr">
-<?
-    $id=$_POST['id']; $pass=$_POST['pass'];
+<?php
+           session_start();
+?>
+<?php
+    $id=$_POST['id']; 
+    $password=md5($_POST['pwd']);
    if(!$id) {
      echo("
            <script>
@@ -12,7 +14,7 @@
          exit;
    }
 
-   if(!$pass) {
+   if(!$password) {
      echo("
            <script>
              window.alert('password blanked.')
@@ -24,9 +26,9 @@
 
   $conn=mysqli_connect("127.0.0.1","root","1234","c9") or
   die( "can't connect mysql."); 
-
+  
    $sql = "select * from user where id='$id'";
-   $result = mysqli_query($sql, $conn);
+   $result = mysqli_query($conn, $sql);
 
    $num_match = mysqli_num_rows($result);
 
@@ -45,7 +47,7 @@
 
         $db_pass = $row[password];
 
-        if($pass != $db_pass)
+        if($password != $db_pass)
         {
            echo("
               <script>
@@ -58,12 +60,20 @@
         }
         else
         {	
-			
-
-           $userid = $row[id];
+			$userid = $row[id];
 		   $username = $row[name];
+		   $userlevel = $row[admin];
 
-      
+         $_SESSION['userid'] = $userid;
+         $_SESSION['username'] = $username;
+         $_SESSION['userlevel'] = $userlevel;
+          
+         setCookie('userid', $userid, time()+(60*60), '/');
+         setCookie('admin', $userlevel, time()+(60*60), '/');
+         setCookie('name', $username, time()+(60*60), '/');
+         
+
+
            echo("
               <script>
 			  
