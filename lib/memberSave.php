@@ -11,9 +11,37 @@
  $gender=$_POST['gender'];
  $email=$_POST['email'];
  
+	
+	$sql = "select * from user where id='$id'";
+ $result = mysqli_query($conn,$sql);
+ $exist_id = mysqli_num_rows($result);
+ if($exist_id) {
+  echo("
+           <script>
+             window.alert('id already exist.')
+             history.go(-1)
+           </script>
+         ");
+         exit;
+   }
+ else
+ {
  $sql = "insert into user(id, name, email, phone_number, password, gender)";
  $sql = $sql. "values('$id','$name','$email','$phone_number','$password', '$gender')";
- mysqli_query($conn,$sql);
+ $reuslt = mysqli_query($conn,$sql);
+  if($result)
+  {
+  echo 'success';
+  }
+ }
+  
 
  mysqli_close($conn);
+ echo "
+		
+	   <script>
+	   window.alert('success')
+	    location.href = '../index.php';
+	   </script>
+	";
 ?>
