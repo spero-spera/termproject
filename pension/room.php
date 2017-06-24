@@ -38,6 +38,18 @@
    <td>Yes<input type="radio" size="5" value="1" name="aircon">
    No<input type="radio" size="5" value="0" name="aircon"></td>
   </tr>
+  <tr>
+   <td>price in noraml</td>
+   <td><input type="text" size="30" name="normal"></td>
+  </tr>
+  <tr>
+   <td>price in peak(ratio)</td>
+   <td><input type="text" size="30" name="peak"></td>
+  </tr>
+  <tr>
+   <td>price in child(ratio)</td>
+   <td><input type="text" size="30" name="child"></td>
+  </tr>
  </table>
  <?php $num = $_POST['num']; ?>
  <input type="hidden" name = "num" value = "<?php echo $num; ?>">

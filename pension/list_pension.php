@@ -11,8 +11,21 @@
 <?php
  $conn=mysqli_connect("127.0.0.1","root","1234","c9") or
  die("can't connect mysql."); 
+ 
+ $name = $_POST['name'];
+ $addr = $_POST['addr'];
+ $test = 'p';
  $sql = "select * from pension";
+ 
+ if($name && !$addr)
+ {  $sql = "select * from pension where name like '%$name%'";}
+ else if(!$name && $addr)
+  {$sql = "select * from pension where address like '%$addr%'";}
+ else if($name && $addr)
+  {$sql = "select * from pension where name like '%$name%' and address like '%$addr%'";}
+
  $qu =mysqli_query($conn,$sql);
+ 
  ?>
  <table class="table">
  <thead>
@@ -21,7 +34,17 @@
  <th>phone</th>
  <th> room_count </th>
  <th> more information </th>
- <th> delete pension</th>
+ <th> 
+ <?php if($_COOKIE[admin]==1)
+    {
+    echo "room del";
+    }
+    else if(isset($_COOKIE['userid']))
+    {
+     echo "make reservation";
+    }
+    ?>
+ </th>
  <th>
  <?php if($_COOKIE[admin]==1)
     {
@@ -38,12 +61,32 @@
  <td><form name="more" method="post" action="more_info.php">
      <input type ="hidden"  name="num" value ="<?php echo $list[0]?>">
      <input type = "submit" value="more info" name = "moreinfo"></form></td>
- <td><form name="del" method="post" action="del.php">
+ <td>
+  <?php if($_COOKIE[admin]==1)
+    {
+  ?>
+  <form name="del" method="post" action="pension_del.php">
+    <input type ="hidden"  name="num" value ="<?php echo $list[0]?>">
+    <input type = "submit" value="del" name = "del">
+    </form>
+     <?php 
+    }?>
+   <? else if(isset($_COOKIE['userid']))
+     {?>
+     <form name="more" method="post" action="more_info.php">
      <input type ="hidden"  name="num" value ="<?php echo $list[0]?>">
-     <input type = "submit" value="del" name = "del"></form></td>
- <td><form name="del" method="post" action="room.php">
+     <input type = "submit" value="reservaiton" name = "moreinfo"></form></td>
+     <? } ?>
+    </td>
+ <td>
+  <?php if($_COOKIE[admin]==1)
+    {
+  ?>
+  <form name="del" method="post" action="room.php">
      <input type ="hidden"  name="num" value ="<?php echo $list[0]?>">
-     <input type = "submit" value="add" name = "add"></form></td>
+     <input type = "submit" value="add" name = "add">
+     <?php }?>
+     </form></td>
  </tr>
 <?php endwhile ?>
 </table>

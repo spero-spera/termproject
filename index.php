@@ -20,9 +20,17 @@
 		{
 			?><br> 
 		 <a href="./pension/pension.php">add pension</a><br>
+		 
 		 <a href="./pension/list_pension.php">show pension list and add room</a>
 	<?php	}
-	?>
+	
+		else
+		{
+		?>
+			 <a href="./pension/list_pension.php">show pension list</a><br>
+			 <a href="./pension/search.php">search pension list</a><br>
+	<?php	}
+		?>
 	</div>  <!-- end of menu --> 
 
   <div id="content">

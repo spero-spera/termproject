@@ -11,13 +11,16 @@
  $aircon=$_POST['aircon'];
  $TV=$_POST['TV'];
  
+ $normal = $_POST['normal'];
+ $peak = $_POST['peak'];
+ $child = $_POST['child'];
+ 
  $sql = "insert into room(name, wifi, grill, TV, aircon, number, capacity)";
  $sql = $sql. "values('$name','$wifi','$grill','$TV', '$aircon', '$num', $capa)";
  $reuslt = mysqli_query($conn,$sql);
-  if($result)
-  {
-  echo 'success';
-  }
+ $sql2 = "insert into price(name, number, normal, child, peak)";
+ $sql2 = $sql2. "values('$name','$num','$normal','$peak', '$child')";
+ mysqli_query($conn,$sql2);
  
  mysqli_close($conn);
  echo "

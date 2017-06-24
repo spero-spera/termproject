@@ -12,9 +12,9 @@
  $sql2 = "select * from facility where number='$num'";
  $result2 = mysqli_query($conn,$sql2);
  $list2 = mysqli_fetch_row($result2);
- $sql3 = "select * from room where number='$num'";
+ $sql3 = "select * from room A,price B where A.number='$num' and B.number ='$num' ";
  $result3 = mysqli_query($conn,$sql3);
-
+ 
  echo "Pension number : ". $num;
  ?>
 <head>
@@ -30,7 +30,7 @@
  <th> pool</th>
  <th> firecracker</th>
  <th> valley</th>
- <th> number</th>
+ <th> tent</th>
  </thead>
  
  <?php $list = mysqli_fetch_row($result);?>
@@ -57,7 +57,9 @@
  <th>TV</th>
  <th>aircon</th>
  <th>capa</th>
- <th>price</th>
+ <th>basic price</th>
+ <th>peak price</th>
+ <th>child price</th>
  <th>
  <?php if($_COOKIE[admin]==1)
     {
@@ -76,8 +78,13 @@
  <td><?php echo $list3[3]?></td>
  <td><?php echo $list3[4]?></td>
  <td><?php echo $list3[6]?></td>
- <td></td>
- <td></td>
+ <td><?php echo $list3[9]?></td>
+ <td><?php echo $list3[10]?></td>
+ <td><?php echo $list3[11]?></td>
+ <td><form name="reservation" method="post" action="../reservation/reservation.php">
+     <input type ="hidden"  name="name" value ="<?php echo $list3[0]?>">
+     <input type ="hidden"  name="number" value ="<?php echo $list3[5]?>">
+     <input type = "submit" value="reservaiton" name = "reservation"></form></td>
  </tr>
 <?php endwhile ?>
 </table>
