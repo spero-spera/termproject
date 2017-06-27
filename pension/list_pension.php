@@ -48,7 +48,8 @@
  <th>
  <?php if($_COOKIE[admin]==1)
     {
-    echo "room add";
+    echo "room add, or modify pension";
+    
     }?>
 </th>
  </thead>
@@ -82,11 +83,18 @@
   <?php if($_COOKIE[admin]==1)
     {
   ?>
-  <form name="del" method="post" action="room.php">
+  <form name="add" method="post" action="room.php">
      <input type ="hidden"  name="num" value ="<?php echo $list[0]?>">
      <input type = "submit" value="add" name = "add">
-     <?php }?>
+     
+     </form>
+     
+     <form name="modify" method="post" action="modify.php">
+     <input type ="hidden"  name="num" value ="<?php echo $list[0]?>">
+     <input type = "submit" value="modify" name = "modify">
+     
      </form></td>
+     <?php }?>
  </tr>
 <?php endwhile ?>
 </table>

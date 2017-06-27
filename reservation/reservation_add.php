@@ -3,10 +3,7 @@
 <?php
  $conn=mysqli_connect("127.0.0.1","root","1234","c9") or
  die( "can't connect mysql."); 
- $set = "set autocommit = 0";
- mysqli_query($conn,$set);
- $start = "start transaction";
- mysqli_query($conn,$start);
+
  
  $chil=$_POST['chil'];
  $date=$_POST['date'];
@@ -14,8 +11,43 @@
  $number=$_POST['number'];
  $norm=$_POST['norm'];
  $leng=$_POST['leng'];
+ $leng_for_test = $leng;
+ $test_date = "select date,length from reservation where pension_number = '$number' and room_name = '$name'";
+ $test_date2 = mysqli_query($conn,$test_date);
  
- $sql = "select normal, child, peak from price where name = '$name' and number = '$number'";
+ $tr = 1;
+  while($test = mysqli_fetch_row($test_date2))
+  {
+   while($test[1])
+   {
+    $during = $test[0] + $test[1];
+    if($during >= $date && $during <= $date + $leng)
+    {$tr = 0;
+    break;}
+    $test[1]= $test[1]-1;
+   }
+  }
+ echo $tr;
+ if(!$tr)
+ { echo("
+              <script>
+                window.alert('date jung-bok')
+                history.go(-1)
+              </script>
+           ");
+
+           exit;
+ }
+ else {
+  
+ 
+  
+  $set = "set autocommit = 0";
+ mysqli_query($conn,$set);
+ $start = "start transaction";
+ mysqli_query($conn,$start);
+
+ $sql = "select normal, child from price where name = '$name' and number = '$number'";
  $result = mysqli_query($conn,$sql);
  $list = mysqli_fetch_row($result);
  
@@ -72,7 +104,7 @@
   mysqli_query($conn, $roll);
   echo "sorry something wrong";
  }
- 
+ }
  mysqli_close($conn);
  
  ?>

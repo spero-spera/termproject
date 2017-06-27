@@ -23,7 +23,7 @@
         }
 ?>
         <div class="menus1"><a href="../login/logout.php">logout</a> |
-		<a href="../login/member_form_modify.php">modify</a></div>
+		<a href="./lib/modify.php">modify</a></div>
 <?php
 	}
 ?>

@@ -86,7 +86,8 @@
      <input type ="hidden"  name="number" value ="<?php echo $list3[5]?>">
      <input type = "submit" value="reservaiton" name = "reservation"></form></td>
  </tr>
-<?php endwhile ?>
+<?php endwhile;
+mysqli_close($conn);?>
 </table>
  </body>
  </html>

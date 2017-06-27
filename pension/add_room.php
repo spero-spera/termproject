@@ -19,9 +19,10 @@
  $sql = $sql. "values('$name','$wifi','$grill','$TV', '$aircon', '$num', $capa)";
  $reuslt = mysqli_query($conn,$sql);
  $sql2 = "insert into price(name, number, normal, child, peak)";
- $sql2 = $sql2. "values('$name','$num','$normal','$peak', '$child')";
+ $sql2 = $sql2. "values('$name','$num','$normal','$child', '$peak')";
  mysqli_query($conn,$sql2);
- 
+ $sql3 = "update pension set room_count = room_count +1 where number = '$num'";
+ mysqli_query($conn,$sql3);
  mysqli_close($conn);
  echo "
 		

@@ -9,8 +9,7 @@
 <div id="wrap">
 	<div id="header">
     <?php include "/home/ubuntu/workspace/lib/menu1.php"; ?>
-	</div>  <!-- end of header -->
-
+	</div>  
 	<div id="menu">
 	
 	<echo> welcome Pension reservation cite </echo></br>
@@ -31,14 +30,23 @@
 			 <a href="./pension/search.php">search pension list</a><br>
 	<?php	}
 		?>
-	</div>  <!-- end of menu --> 
+		
+		<a href="./mypage.php">my page</a><br>
+		<?php if($_COOKIE[admin]==1)
+		{
+		?>
+		<a href="./admin.php">page for admin </a><br>
+		<?php
+		}
+		?>
+	</div>  
 
   <div id="content">
 		<div id="main">kk
 
 	</div>
-  </div> <!-- end of content -->
-</div> <!-- end of wrap -->
+  </div>
+</div> 
 
 </body>
 </html>

@@ -15,30 +15,43 @@
    <td><input type="text" size="30" name="name"></td>
   </tr>
   <tr>
-   <td>capacity</td>
-   <td><input type="text" size="30" name="capa"></td>
+   <td>address</td>
+   <td><input type="text" size="30" name="address"></td>
   </tr>
   <tr>
-   <td>TV</td>
-   <td>Yes<input type="radio" size="5" value="1" name="TV">
-   NO<input type="radio" size="5" value="0" name="fire"></td>
+  <td>phone_number</td>
+   <td><input type="text" size="30" name="phone"></td>
+  </tr>
+  
+  
+  
+  <tr>
+  <td>explain</td>
+   <td><input type="text" size="200" name="expl"></td>
   </tr>
   <tr>
-   <td>wifi</td>
-   <td>Yes<input type="radio" size="5" value="1" name="wifi">
-   No<input type="radio" size="5" value="0" name="valley"></td>
-  </tr>
-  <tr>
-   <td>grill</td>
-   <td>Yes<input type="radio" size="5" value="1" name="grill">
+   <td>pool</td>
+   <td>Yes<input type="radio" size="5" value="1" name="pool">
    NO<input type="radio" size="5" value="0" name="pool"></td>
   </tr>
   <tr>
-   <td>aircon</td>
-   <td>Yes<input type="radio" size="5" value="1" name="aircon">
-   No<input type="radio" size="5" value="0" name="tent"></td>
+   <td>firecracker</td>
+   <td>Yes<input type="radio" size="5" value="1" name="fire">
+   No<input type="radio" size="5" value="0" name="fire"></td>
+  </tr>
+  <tr>
+   <td>tent</td>
+   <td>Yes<input type="radio" size="5" value="1" name="tent">
+   NO<input type="radio" size="5" value="0" name="tent"></td>
+  </tr>
+  <tr>
+   <td>valley</td>
+   <td>Yes<input type="radio" size="5" value="1" name="valley">
+   No<input type="radio" size="5" value="0" name="valley"></td>
   </tr>
  </table>
+  <td><input type="hidden" size="30" name="count" value=0></td>
+  
  <input type=submit value="submit"><input type=reset value="rewrite">
 </form>
 </body>

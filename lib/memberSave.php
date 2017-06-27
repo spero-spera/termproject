@@ -21,11 +21,12 @@
          ");
          exit;
  }
-	
+	if($id)
+	{
 	$sql = "select * from user where id='$id'";
  $result = mysqli_query($conn,$sql);
  $exist_id = mysqli_num_rows($result);
- if($exist_id) {
+  if($exist_id) {
   echo("
            <script>
              window.alert('id already exist.')
@@ -34,17 +35,21 @@
          ");
          exit;
    }
- else
- {
+  else {
  $sql = "insert into user(id, name, email, phone_number, password, gender)";
  $sql = $sql. "values('$id','$name','$email','$phone_number','$password', '$gender')";
  $reuslt = mysqli_query($conn,$sql);
   if($result)
   {
   echo 'success';
-  }
- }
-  
+  }}
+	}
+	else
+	{
+	 $sql = "update user set name='$name', email='$email', phone_number='$phone_number', password='$password', gender='$gender' where id = '$_COOKIE[userid]'";
+ mysqli_query($conn,$sql);
+ setCookie('name', $name, time()+(60*60), '/');
+	}
 
  mysqli_close($conn);
  echo "
