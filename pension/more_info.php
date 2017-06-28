@@ -12,7 +12,7 @@
  $sql2 = "select * from facility where number='$num'";
  $result2 = mysqli_query($conn,$sql2);
  $list2 = mysqli_fetch_row($result2);
- $sql3 = "select * from room A,price B where A.number='$num' and B.number ='$num' ";
+ $sql3 = "select * from room A,price B where A.number='$num' and B.number ='$num' and A.name = B.name ";
  $result3 = mysqli_query($conn,$sql3);
  
  echo "Pension number : ". $num;
@@ -58,8 +58,8 @@
  <th>aircon</th>
  <th>capa</th>
  <th>basic price</th>
- <th>peak price</th>
  <th>child price</th>
+ <th>peak price</th>
  <th>
  <?php if($_COOKIE[admin]==1)
     {

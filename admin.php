@@ -7,9 +7,9 @@
 	<?php 
 	$conn=mysqli_connect("127.0.0.1","root","1234","c9") or
 	die( "can't connect mysql."); 
-	$sql= "select userid, count(*) from reservation group by userid";
+	$sql= "select userid, count(*) from reservation group by userid order by count(*) desc";
 	$result = mysqli_query($conn, $sql);
-	$sql2 = "select name, count(*) from reservation A, pension B where A.pension_number = B.number group by name";
+	$sql2 = "select name, count(*) from reservation A, pension B where A.pension_number = B.number group by name order by count(*) desc";
 	$result2 = mysqli_query($conn, $sql2);
 	echo "user order by reservation_count";
 	 ?>
