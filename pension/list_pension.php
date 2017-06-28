@@ -12,10 +12,13 @@
  $conn=mysqli_connect("127.0.0.1","root","1234","c9") or
  die("can't connect mysql."); 
  
+ $price = $_POST['Price'];
  $name = $_POST['name'];
  $addr = $_POST['addr'];
  $test = 'p';
  $sql = "select * from pension";
+ 
+ 
  
  if($name && !$addr)
  {  $sql = "select * from pension where name like '%$name%'";}

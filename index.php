@@ -30,7 +30,6 @@
 			 <a href="./pension/search.php">search pension list</a><br>
 	<?php	}
 		?>
-		
 		<a href="./mypage.php">my page</a><br>
 		<?php if($_COOKIE[admin]==1)
 		{

@@ -20,8 +20,8 @@
   {
    while($test[1])
    {
-    $during = $test[0] + $test[1];
-    if($during >= $date && $during <= $date + $leng)
+    $during = date("Y-m-d" , strtotime($test[0]."$test[1] days"));
+    if($during >= $date && $during <= date("Y-m-d" , strtotime($date."$leng days")))
     {$tr = 0;
     break;}
     $test[1]= $test[1]-1;
@@ -42,10 +42,6 @@
   
  
   
-  $set = "set autocommit = 0";
- mysqli_query($conn,$set);
- $start = "start transaction";
- mysqli_query($conn,$start);
 
  $sql = "select normal, child from price where name = '$name' and number = '$number'";
  $result = mysqli_query($conn,$sql);
@@ -57,8 +53,6 @@
 
  $id = $_COOKIE['userid'];
  echo $id;
- $sql2 = "insert into reservation(pension_number, room_name, date, normal, child, length, price_total, userid)";
- $sql2 = $sql2. "values('$number','$name', '$date', '$norm','$chil', '$leng', $price, '$id')";
  $sql3 = "select name from pension where number = '$number'";
  $qu = mysqli_query($conn,$sql3);
  $qqu = mysqli_fetch_row($qu);
@@ -87,23 +81,28 @@
  <td><?php echo $price?></td>
  </tr>
  </table>
+ <form name="reservation" method="post" action="./payment.php">
+     <input type ="hidden"  name="name" value ="<?php echo $name?>">
+     <input type ="hidden"  name="number" value ="<?php echo $number?>">
+      <input type ="hidden"  name="date" value ="<?php echo $date?>">
+     <input type ="hidden"  name="norm" value ="<?php echo $norm?>">
+      <input type ="hidden"  name="leng" value ="<?php echo $leng?>">
+     <input type ="hidden"  name="chil" value ="<?php echo $chil?>">
+     <br>
+      <input type ="hidden"  name="price" value ="<?php echo $price?>">
+      card<input type="radio" size="5" value="0" name="pay">
+   account<input type="radio" size="5" value="1" name="pay">
+    bitcoin<input type="radio" size="5" value="2" name="pay">
+    <br>
+    <table border="1">
+   <tr>
+   <td>halbu(0~10)</td>
+   <td><input type="text" size="30" name="halbu"></td>
+  </tr>
+  
+     <input type = "submit" value="pay" name = "topay"></form>
  <?php
- $result = mysqli_query($conn,$sql2);
- if($result)
- {
-  $set = "set autocommit=1";
-  $commit = "commit";
-  mysqli_query($conn, $set);
-  mysqli_query($conn, $commit);
-  echo "success thx";
- }
- else {
-  $set = "set autocommit=1";
-  $roll = "rollback";
-  mysqli_query($conn, $set);
-  mysqli_query($conn, $roll);
-  echo "sorry something wrong";
- }
+ 
  }
  mysqli_close($conn);
  
